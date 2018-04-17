@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.*" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.*" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.*" />
@@ -42,6 +43,13 @@
   <ItemGroup>
     <None Include="web.config" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="Views\*.cshtml;WebRoot\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.Development.json" />
+    <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

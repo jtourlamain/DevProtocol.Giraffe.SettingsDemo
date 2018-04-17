@@ -5,7 +5,7 @@ A F# Giraffe web application using an appsettings.json file.
 
 ## Contributors
 
-- [Jan Tourlamain] (https://github.com/jtourlamain "Jan Tourlamain GitHub")
+- [Jan Tourlamain](https://github.com/jtourlamain "Jan Tourlamain GitHub")
 
 ## More info 
 

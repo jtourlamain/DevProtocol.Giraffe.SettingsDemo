@@ -7,6 +7,7 @@ open Microsoft.AspNetCore.Cors.Infrastructure
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
+open Microsoft.Extensions.Configuration
 open Giraffe
 open Giraffe.Razor
 open DevProtocol.Giraffe.SettingsDemo.Web.Routing
@@ -46,6 +47,12 @@ let configureServices (services : IServiceCollection) =
     services.AddCors() |> ignore
     services.AddGiraffe() |> ignore
 
+let configureAppConfiguration  (context: WebHostBuilderContext) (config: IConfigurationBuilder) =
+    config
+        .AddJsonFile("appsettings.json",false,true)
+        .AddJsonFile(sprintf "appsettings.%s.json" context.HostingEnvironment.EnvironmentName ,true)
+        .AddEnvironmentVariables() |> ignore
+
 let configureLogging (builder : ILoggingBuilder) =
     let filter (l : LogLevel) = l.Equals LogLevel.Error
     builder.AddFilter(filter).AddConsole().AddDebug() |> ignore
@@ -59,6 +66,7 @@ let main _ =
         .UseContentRoot(contentRoot)
         .UseIISIntegration()
         .UseWebRoot(webRoot)
+        .ConfigureAppConfiguration(configureAppConfiguration)
         .Configure(Action<IApplicationBuilder> configureApp)
         .ConfigureServices(configureServices)
         .ConfigureLogging(configureLogging)

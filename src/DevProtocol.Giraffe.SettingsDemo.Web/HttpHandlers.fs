@@ -1,11 +1,14 @@
 ﻿module DevProtocol.Giraffe.SettingsDemo.Web.HttpHandlers
 
+open Microsoft.AspNetCore.Http
+open Microsoft.Extensions.Configuration
 open Giraffe
 open Giraffe.Razor
 open DevProtocol.Giraffe.SettingsDemo.Web.Models
 
 
-let indexHandler (name : string) =
-    let greetings = sprintf "Hello %s, from Giraffe!" name
-    let model     = { Text = greetings }
-    razorHtmlView "Index" model
+let indexHandler =
+    fun (next: HttpFunc) (ctx: HttpContext) ->
+        let settings = ctx.GetService<IConfiguration>()
+        let model     = { Text = "Giraffe demo: " + settings.["Greeting"] }
+        razorHtmlView "Index" model next ctx

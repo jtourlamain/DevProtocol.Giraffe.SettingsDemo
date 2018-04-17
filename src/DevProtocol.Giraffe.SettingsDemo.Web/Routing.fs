@@ -8,7 +8,6 @@ let routes: HttpFunc -> HttpFunc =
     choose [
         GET >=>
             choose [
-                route "/" >=> indexHandler "world"
-                routef "/hello/%s" indexHandler
+                route "/" >=> indexHandler
             ]
         setStatusCode 404 >=> text "Not Found" ]
