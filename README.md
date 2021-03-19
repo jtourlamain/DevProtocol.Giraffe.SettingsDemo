@@ -9,7 +9,7 @@ A F# Giraffe web application using an appsettings.json file.
 
 ## More info 
 
-- [https://www.devprotocol.com/use-appsettings-in-a-giraffe-web-app/](https://www.devprotocol.com/use-appsettings-in-a-giraffe-web-app/)
+- [https://www.devprotocol.com/2018/04/19/use-appsettings-in-a-giraffe-web-app.html](https://www.devprotocol.com/2018/04/19/use-appsettings-in-a-giraffe-web-app.html)
 
 ## License
 
